@@ -24,10 +24,11 @@ namespace ClubeDaLeitura.ConsoleApp
                 Console.Clear();
 
                 Console.WriteLine("--MENU DE OPÇÕES--");
-                Console.WriteLine("([1] PARA MENU AMIGOS");
-                Console.WriteLine("([2] PARA MENU CAIXAS");
-                Console.WriteLine("([3] PARA MENU REVISTAS");
-                Console.WriteLine("([4] PARA MENU EMPRÉSTIMOS");
+                Console.WriteLine("[1] PARA MENU AMIGOS");
+                Console.WriteLine("[2] PARA MENU CAIXAS");
+                Console.WriteLine("[3] PARA MENU REVISTAS");
+                Console.WriteLine("[4] PARA MENU EMPRÉSTIMOS");
+                Console.WriteLine("DIGITE 's' OU 'S' PARA FECHAR O PROGRAMA ");
                 string opcao = Console.ReadLine();
 
                 if (opcao == "1")
@@ -45,6 +46,17 @@ namespace ClubeDaLeitura.ConsoleApp
                 else if (opcao == "4")
                 {
                     cadastroEmprestimo.MostrarMenuEmprestimos();
+                }
+                else if(opcao == "s" || opcao == "S")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Opção incorreta...");
+                    Console.WriteLine("Digite uma opção válida.");
+                    Console.ReadLine();
                 }
                 Console.Clear();
 

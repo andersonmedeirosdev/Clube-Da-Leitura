@@ -32,7 +32,7 @@ namespace ClubeDaLeitura.ConsoleApp.Empréstimo
 
         public override string ToString()
         {
-            return $"Id: {id} Amigo: {this.amigo.nome} Caixa: {this.revista.colecao} Data Empréstimo: {dataEmprestimo} Data Devolução: {dataDevolucao}";
+            return $"Id: {id} | Amigo: {this.amigo.nome} | Caixa: {this.revista.colecao} | Data Empréstimo: {dataEmprestimo} | Data Devolução: {dataDevolucao}";
         }
     }
 }

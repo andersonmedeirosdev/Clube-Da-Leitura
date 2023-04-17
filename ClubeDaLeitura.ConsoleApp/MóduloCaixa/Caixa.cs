@@ -22,7 +22,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
 
         public override string ToString()
         {
-            return $"Id: {id} Cor: {cor} Etiqueta: {etiqueta}";
+            return $"Id: {id} | Cor: {cor} | Etiqueta: {etiqueta}";
         }
     }
 }

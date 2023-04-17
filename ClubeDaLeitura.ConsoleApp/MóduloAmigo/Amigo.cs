@@ -31,7 +31,7 @@ namespace ClubeDaLeitura.ConsoleApp
 
         public override string ToString()
         {
-            return $"Id: {id} Nome: {nome} Nome Responsável: {nomeResponsavel} Telefone: {telefone} Endereço: {endereco}";
+            return $"Id: {id} | Nome: {nome} | Nome Responsável: {nomeResponsavel} | Telefone: {telefone} | Endereço: {endereco}";
         }
 
     }

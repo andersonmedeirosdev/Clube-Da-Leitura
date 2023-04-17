@@ -25,7 +25,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
 
         public override string ToString()
         {
-            return $"Id: {id} Coleção: {colecao} Edição: {edicao} Caixa: {caixa.etiqueta}";
+            return $"Id: {id} | Coleção: {colecao} | Edição: {edicao} | Caixa: {caixa.etiqueta}";
         }
     }
 }

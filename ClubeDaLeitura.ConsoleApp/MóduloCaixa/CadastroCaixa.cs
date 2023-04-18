@@ -30,7 +30,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
         public void CadastrarCaixa()
         {
             Caixa caixa = FormularCaixa();
-            repositorioCaixa.AdicionarCaixa(caixa);
+            repositorioCaixa.Adicionar(caixa);
         }
 
         public  void MostrarMenuCaixa()
@@ -67,7 +67,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
         {
             Console.Clear();
             Console.WriteLine("CAIXAS CADASTRADAS");
-            ArrayList caixas = repositorioCaixa.ListarCaixas();
+            ArrayList caixas = repositorioCaixa.ListarTodos();
             if (caixas.Count == 0)
             {
                 Console.WriteLine("Nenhuma caixa cadastrada...");
@@ -87,7 +87,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
             Console.WriteLine("ATUALIZAR CAIXA");
             Console.WriteLine("Digite um Id para editar:");
             int id = Convert.ToInt32(Console.ReadLine());
-            var caixaEncontrada = repositorioCaixa.ObterCaixa(id);
+            Caixa caixaEncontrada = (Caixa)repositorioCaixa.ObterPorId(id);
             if (caixaEncontrada == null)
             {
                 Console.WriteLine("Caixa não encontrada...");
@@ -95,7 +95,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
             }
             Caixa caixaEditada = FormularCaixa();
 
-            repositorioCaixa.AtualizaCaixa(caixaEncontrada, caixaEditada);
+            caixaEncontrada.Editar(caixaEditada);
         }
 
         private void ExcluirCaixa()
@@ -106,7 +106,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
             Console.WriteLine("EXCLUIR CAIXA");
             Console.WriteLine("Digite um Id para Excluir:");
             int id = Convert.ToInt32(Console.ReadLine());
-            var caixaEncontrada = repositorioCaixa.ObterCaixa(id);
+            var caixaEncontrada = (Caixa)repositorioCaixa.ObterPorId(id);
 
             if (caixaEncontrada == null)
             {
@@ -115,7 +115,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
                 return;
             }
 
-            repositorioCaixa.RemoverCaixa(caixaEncontrada);
+            repositorioCaixa.Remover(caixaEncontrada);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloAmigo
         public void CadastrarAmigo()
         {
             Amigo amigo = FormularAmigo();
-            repositorioAmigos.AdicionarAmigo(amigo);
+            repositorioAmigos.Adicionar(amigo);
         }
 
         public void MostrarMenuAmigo()
@@ -68,7 +68,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloAmigo
         public void MostrarAmigos()
         {
             Console.WriteLine("AMIGOS CADASTRADOS");
-            ArrayList amigos = repositorioAmigos.ListarAmigos();
+            ArrayList amigos = repositorioAmigos.ListarTodos();
             if (amigos.Count == 0)
             {
                 Console.WriteLine("Nenhum amigo cadastrado...");
@@ -88,7 +88,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloAmigo
             Console.WriteLine("ATUALIZAR AMIGO");
             Console.WriteLine("Digite um Id para Editar:");
             int id = Convert.ToInt32(Console.ReadLine());
-            var amigoEncontrado = repositorioAmigos.ObterAmigo(id);
+            var amigoEncontrado = (Amigo)repositorioAmigos.ObterPorId(id);
             if (amigoEncontrado == null)
             {
                 Console.WriteLine("Amigo não encontrado");
@@ -96,7 +96,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloAmigo
             }
             Amigo amigoEditado = FormularAmigo();
 
-            repositorioAmigos.AtualizaAmigo(amigoEncontrado, amigoEditado);
+            amigoEncontrado.EditarAmigo(amigoEditado);
         }
 
         private void ExcluirAmigo()
@@ -107,7 +107,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloAmigo
             Console.WriteLine("EXCLUIR AMIGO");
             Console.WriteLine("Digite um Id para Excluir:");
             int id = Convert.ToInt32(Console.ReadLine());
-            var amigoEncontrado = repositorioAmigos.ObterAmigo(id);
+            var amigoEncontrado = (Amigo)repositorioAmigos.ObterPorId(id);
 
             if (amigoEncontrado == null)
             {
@@ -116,7 +116,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloAmigo
                 return;
             }
 
-            repositorioAmigos.RemoverAmigo(amigoEncontrado);
+            repositorioAmigos.Remover(amigoEncontrado);
         }
     }
 }

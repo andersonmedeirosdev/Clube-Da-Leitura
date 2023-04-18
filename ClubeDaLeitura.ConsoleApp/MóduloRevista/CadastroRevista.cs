@@ -17,7 +17,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
         public Revista FormularRevista()
         {
             Console.Clear();
-            ArrayList caixas = repositorioCaixa.ListarCaixas();
+            ArrayList caixas = repositorioCaixa.ListarTodos();
             foreach(Caixa item in caixas)
             {
                 Console.WriteLine(item);
@@ -32,14 +32,14 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
             string edicao = Console.ReadLine();
             Console.Write("Numero da Caixa: ");
             int id = Convert.ToInt32(Console.ReadLine());
-            Caixa caixa = repositorioCaixa.ObterCaixa(id);
+            Caixa caixa = (Caixa)repositorioCaixa.ObterPorId(id);
             return new Revista(colecao, edicao, caixa);
         }
 
         public void CadastrarRevista()
         {
             Revista revista = FormularRevista();
-            repositorioRevista.AdicionarRevista(revista);
+            repositorioRevista.Adicionar(revista);
         }
 
         public void MostrarMenuRevista()
@@ -75,7 +75,7 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
         public void MostrarRevistas()
         {
             Console.WriteLine("REVISTAS CADASTRADAS");
-            ArrayList revistas = repositorioRevista.ListarRevistas();
+            ArrayList revistas = repositorioRevista.ListarTodos();
             if(revistas.Count == 0)
             {
                 Console.WriteLine("Nenhuma revista cadastrada...");
@@ -95,14 +95,14 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
             Console.WriteLine("ATUALIZAR REVISTAS");
             Console.WriteLine("Digite um Id para Editar:");
             int id = Convert.ToInt32(Console.ReadLine());
-            var revistaEncontrada = repositorioRevista.ObterRevista(id);
+            var revistaEncontrada = (Revista)repositorioRevista.ObterPorId(id);
             if(revistaEncontrada == null)
             {
                 Console.WriteLine("Revista não encontrada...");
                 return;
             }
             Revista revistaEditada = FormularRevista();
-            repositorioRevista.AtualizaRevista(revistaEncontrada, revistaEditada);
+            revistaEncontrada.Editar(revistaEditada);
         }
 
         public void ExcluirRevistas()
@@ -113,14 +113,14 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
             Console.WriteLine("EXCLUIR REVISTAS");
             Console.WriteLine("Digite um Id para Editar:");
             int id = Convert.ToInt32(Console.ReadLine());
-            var revistaEncontrada = repositorioRevista.ObterRevista(id);
+            var revistaEncontrada = repositorioRevista.ObterPorId(id);
             if (revistaEncontrada == null)
             {
                 Console.WriteLine("Revista não encontrada...");
                 return;
             }
 
-            repositorioRevista.RemoverRevista(revistaEncontrada);
+            repositorioRevista.Remover(revistaEncontrada);
         }
     }
 }

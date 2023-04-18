@@ -26,13 +26,13 @@ namespace ClubeDaLeitura.ConsoleApp.Empréstimo
         public Emprestimo FormularEmprestimo()
         {
             Console.Clear();
-            ArrayList amigos = repositorioAmigo.ListarAmigos();
+            ArrayList amigos = repositorioAmigo.ListarTodos();
             foreach(Amigo item in amigos)
             {
                 Console.WriteLine(item);
             }
             Console.WriteLine();
-            ArrayList revista = repositorioRevista.ListarRevistas();
+            ArrayList revista = repositorioRevista.ListarTodos();
             foreach(Revista item in revista)
             {
                 Console.WriteLine(item);
@@ -42,23 +42,23 @@ namespace ClubeDaLeitura.ConsoleApp.Empréstimo
             Console.WriteLine("Insira os dados abaixo para cadastrar o Empréstimo:");
             Console.Write("Número do Amigo: ");
             int idAmigo = Convert.ToInt32(Console.ReadLine());
-            Amigo amigo = repositorioAmigo.ObterAmigo(idAmigo);
+            Amigo amigo = (Amigo)repositorioAmigo.ObterPorId(idAmigo);
             Console.Write("Número da Caixa: ");
             int idRevista = Convert.ToInt32(Console.ReadLine());
-            Revista revistaEncontrada = repositorioRevista.ObterRevista(idRevista);
+            Revista revistaEncontrada = (Revista)repositorioRevista.ObterPorId(idRevista);
             return new Emprestimo(amigo, revistaEncontrada);
         }
 
         public void CadastrarEmprestimo()
         {
             Emprestimo emprestimo = FormularEmprestimo();
-            repositorioEmprestimo.AdicionarEmprestimo(emprestimo);
+            repositorioEmprestimo.Adicionar(emprestimo);
         }
 
         public void MostrarEmprestimos()
         {
             Console.WriteLine("EMPRÉSTIMOS CADASTRADOS");
-            ArrayList emprestimos = repositorioEmprestimo.ListarEmprestimos();
+            ArrayList emprestimos = repositorioEmprestimo.ListarTodos();
             if(emprestimos.Count == 0)
             {
                 Console.WriteLine("No momento não temos empréstimos cadastrados...");

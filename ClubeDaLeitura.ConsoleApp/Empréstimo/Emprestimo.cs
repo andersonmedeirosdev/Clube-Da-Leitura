@@ -1,4 +1,5 @@
-﻿using ClubeDaLeitura.ConsoleApp.MóduloCaixa;
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using ClubeDaLeitura.ConsoleApp.MóduloCaixa;
 using ClubeDaLeitura.ConsoleApp.MóduloRevista;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp.Empréstimo
 {
-    public class Emprestimo
+    public class Emprestimo : Entidade
     {
         public Amigo amigo;
         public Revista revista;
+        //protected static int contador = 1;
         public DateTime dataEmprestimo;
         public DateTime dataDevolucao;
-        public int id;
-        private static int contador = 1;
 
         public Emprestimo(Amigo amigo, Revista revista)
         {
@@ -23,11 +23,6 @@ namespace ClubeDaLeitura.ConsoleApp.Empréstimo
             this.revista = revista;
             this.dataEmprestimo = DateTime.Now;
             this.dataDevolucao = DateTime.Now.AddDays(5);
-        }
-
-        public void AtribuirId()
-        {
-            id = contador++;
         }
 
         public override string ToString()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp
 {
-    public class Amigo
+    public class Amigo : Entidade
     {
         public string nome;
         public string nomeResponsavel;
         public string telefone;
         public string endereco;
-        public int id;
-        private static int contador = 1;
+        protected static int contador = 1;
 
         public Amigo(string nome, string nomeResponsavel, string telefone, string endereco)
         {
@@ -23,11 +23,13 @@ namespace ClubeDaLeitura.ConsoleApp
             this.endereco = endereco;
         }
 
-        public void AtribuirId()
+        public void EditarAmigo(Amigo amigo)
         {
-            id = contador++;
+            this.nome = amigo.nome;
+            this.nomeResponsavel = amigo.nomeResponsavel;
+            this.telefone = amigo.telefone;
+            this.endereco = amigo.endereco;
         }
-
 
         public override string ToString()
         {

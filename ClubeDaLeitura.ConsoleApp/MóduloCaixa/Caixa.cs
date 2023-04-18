@@ -1,12 +1,13 @@
 ﻿
+using ClubeDaLeitura.ConsoleApp.Compartilhados;
+
 namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
 {
-    public class Caixa
+    public class Caixa : Entidade
     {
         public string cor;
         public string etiqueta;
-        public int id;
-        private static int contador = 1;
+        protected static int contador = 1;
 
         public Caixa(string cor, string etiqueta)
         {
@@ -14,11 +15,11 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloCaixa
             this.etiqueta = etiqueta;
         }
 
-        public void AtribuirId()
+        public void Editar(Caixa caixa)
         {
-            id = contador++;
+            this.cor = caixa.cor;
+            this.etiqueta = caixa.etiqueta;
         }
-
 
         public override string ToString()
         {

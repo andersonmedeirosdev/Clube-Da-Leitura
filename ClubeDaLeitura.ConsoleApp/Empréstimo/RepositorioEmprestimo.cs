@@ -1,4 +1,5 @@
-﻿using ClubeDaLeitura.ConsoleApp.MóduloRevista;
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using ClubeDaLeitura.ConsoleApp.MóduloRevista;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,20 +9,8 @@ using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp.Empréstimo
 {
-    public class RepositorioEmprestimo
+    public class RepositorioEmprestimo : RepositorioMae
     {
-        private static ArrayList emprestimos = new ArrayList();
-
-        public void AdicionarEmprestimo(Emprestimo emprestimo)
-        {
-            emprestimo.AtribuirId();
-            emprestimos.Add(emprestimo);
-        }
-
-        public ArrayList ListarEmprestimos()
-        {
-            return emprestimos;
-        }
 
     }
 }

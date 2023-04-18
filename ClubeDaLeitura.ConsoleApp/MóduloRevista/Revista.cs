@@ -1,14 +1,14 @@
-﻿using ClubeDaLeitura.ConsoleApp.MóduloCaixa;
+﻿using ClubeDaLeitura.ConsoleApp.Compartilhados;
+using ClubeDaLeitura.ConsoleApp.MóduloCaixa;
 
 namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
 {
-    public class Revista
+    public class Revista : Entidade
     {
         public string colecao;
-        public int id;
         public string edicao;
-        public int contador = 1;
         public Caixa caixa;
+        //protected static int contador = 1;
 
         public Revista(string colecao, string edicao, Caixa caixa)
         {
@@ -17,10 +17,11 @@ namespace ClubeDaLeitura.ConsoleApp.MóduloRevista
             this.caixa = caixa;
         }
 
-
-        public void AtribuirId()
+        public void Editar(Revista revista)
         {
-            id = contador++;
+            this.colecao = revista.colecao;
+            this.edicao = revista.edicao;
+            this.caixa = revista.caixa;
         }
 
         public override string ToString()
